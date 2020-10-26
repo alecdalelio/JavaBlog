@@ -9,7 +9,14 @@
     
     <div class="container">
         <h1>Create a New Blog Post</h1>
-        <form action="#" th:action="@{/blog_posts/new}" th:object="${blogPost}" method="post">
+        
+        <form 
+        action="#"
+        th:action="@{/blogpost/new}"
+        th:object="${blogPost}"
+        method="post"
+        >
+        
         <input type="hidden" th:field="*{id}" />
             <div class="form-group">
                 <input type="text" class="form-control" placeholder="Blog Title..." th:field="*{title}" />
@@ -20,7 +27,7 @@
             <div>
                 <input type="text" class="form-control" placeholder="Blog entry" th:field="*{blogEntry}" />
             </div>
-            <button class="btn btn-primary">Submit your blog post</button>
+            <button class="btn btn-primary" type="submit">Submit your blog post</button>
         </form> 
     </div> 
 <div th:replace="/fragments/styling :: body-links" ></div>

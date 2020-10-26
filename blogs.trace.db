@@ -1,0 +1,6 @@
+2020-10-26 12:19:16 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "BLOGENTRY VARCHAR(255)": "'It seems there is a new bandwagon trend every couple of weeks in the Blockchain/crypto space. Things develop very quickly and h... (297)"; SQL statement:
+insert into blogpost (blogid, author, blogentry, title) values (null, ?, ?, ?) [22001-200]
+2020-10-26 12:19:22 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "BLOGENTRY VARCHAR(255)": "'It seems there is a new bandwagon trend every couple of weeks in the Blockchain/crypto space. Things develop very quickly and h... (297)"; SQL statement:
+insert into blogpost (blogid, author, blogentry, title) values (null, ?, ?, ?) [22001-200]

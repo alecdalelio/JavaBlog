@@ -1,4 +1,5 @@
 package com.techtalentsouth.javablog.BlogPosts;
+import java.util.ArrayList;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -7,27 +8,28 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import antlr.collections.List;
 
 @Controller
 public class BlogPostController {
    
     @Autowired
     private BlogPostRepository blogPostRepository;
-    // private static ArrayList<BlogPost> posts = new ArrayList<>();
+    private static ArrayList<BlogPost> posts = new ArrayList<>();
 
     @GetMapping(value="/")
     public String index (BlogPost blogPost, Model model) {
-        model.addAttribute("repo", blogPostRepository.findAll());
+        posts.removeAll(posts);
+
+        for(BlogPost postFromDB : blogPostRepository.findAll()) {
+            posts.add(postFromDB);
+        }
+
+        model.addAttribute("posts", posts);
+
         return "blogpost/index";
     }
 
-    @GetMapping(value = "/blog_posts/new")
-    public String newBlog (BlogPost blogPost) {
-        return "blogpost/new";
-    }
-
-    @PostMapping(value = "/blog_posts/new")
+    @PostMapping(value = "/blogpost/new")
     public String create(BlogPost blogPost, Model model) {
         blogPostRepository.save(blogPost);
         model.addAttribute("title", blogPost.getTitle());
@@ -36,7 +38,19 @@ public class BlogPostController {
             return "blogpost/result";
     }
 
-    @GetMapping(value = "/blog_posts/update/{id}")
+    @GetMapping(value = "/blogpost/new")
+    public String newBlog(BlogPost blogPost) {
+        return "blogpost/new";
+    }
+
+    @RequestMapping(value = "blogpost/delete/{id}")
+    public String deletePostWithId(@PathVariable Long id, BlogPost blogPost) {
+        blogPostRepository.deleteById(id);
+        return "blogpost/deleted";
+    }
+
+
+    @RequestMapping(value = "/blogpost/edit/{id}")
     public String updateBlogPost(@PathVariable Long id, Model model) {
     	Optional<BlogPost> result = blogPostRepository.findById(id);
 		BlogPost blogPost = null;
@@ -47,21 +61,11 @@ public class BlogPostController {
 			
 		} else {
 			
-			throw new RuntimeException("Did not find post id" + id);
+			return "Error";
 		}
 		
-		//Set the post as a model attribute
 		model.addAttribute("blogPost", blogPost);
-		//send it across to form
 		return "blogpost/new";
-    }
-
-    @RequestMapping(value = "blog_posts/delete/{id}")
-    public String deletePostWithId(@PathVariable Long id, BlogPost blogPost) {
-
-        blogPostRepository.deleteById(id);
-        return "blogpost/deleted";
-
     }
 
 }

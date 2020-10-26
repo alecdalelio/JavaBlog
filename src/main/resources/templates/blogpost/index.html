@@ -5,28 +5,29 @@
     <div th:replace="/fragments/styling :: head-style" ></div>
 </head>
 <body>
-<div th:replace="fragments/navbar :: navbar" ></div>
 <div class="container">
 <h1>Welcome to my blog!</h1>
-
+<div th:replace="fragments/navbar :: navbar" ></div>
 <h3>Here you'll find writings about Blockchain, music, food and more.</h3>
 
-    <div class="row">
+    <div class="row d-flex justify-content-around">
+
+        <!-- Creates for each loop and makes individual blog posts -->
         <div th:each="blog:${posts}">
-        <div class="col-md-12">
-            <div class="panel panel-default">
-                <div class="panel=heading">
+        <div class="col-md-6 p-0 mb-3">
+            <div class="card">
+                <div class="card-header">
                     <h2 th:text="${blog.title}"></h2>
                 </div>
-                <div class="panel-body">
+                <div class="card-body">
                     <strong><p th:text="${blog.author}" /></strong>
                     <p th:text="${blog.blogEntry}" />
                 </div>
-                <div class="panel-footer">
+                <div class="card-footer">
                     <!-- Link to Update -->
                     <!-- Link to Show -->
-                    <a th:href="@{'/blog_posts/update/{id}'(id=${blog.id})}" class="btn-lg btn-info">Update</a>
-					<a th:href="@{'/blog_posts/delete/{id}'(id=${blog.id})}" class="btn-lg btn-danger">Delete</a>
+                    <a th:href="@{'/blogpost/update/{id}'(id=${blog.id})}" class="btn-lg btn-info">Update</a>
+					<a th:href="@{'/blogpost/delete/{id}'(id=${blog.id})}" class="btn-lg btn-danger">Delete</a>
                 </div>
             </div>
         </div>
