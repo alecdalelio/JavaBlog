@@ -26,29 +26,28 @@ public class BlogPostController {
 
         model.addAttribute("posts", posts);
 
-        return "blogpost/index";
+        return "myBlog/index";
     }
 
-    @PostMapping(value = "/blogpost/new")
+    @PostMapping(value = "/donuts")
     public String create(BlogPost blogPost, Model model) {
         blogPostRepository.save(blogPost);
         model.addAttribute("title", blogPost.getTitle());
         model.addAttribute("author", blogPost.getAuthor());
         model.addAttribute("blogEntry", blogPost.getBlogEntry());
-            return "blogpost/result";
+            return "myBlog/result";
     }
 
     @GetMapping(value = "/blogpost/new")
     public String newBlog(BlogPost blogPost) {
-        return "blogpost/new";
+        return "myBlog/new";
     }
 
     @RequestMapping(value = "blogpost/delete/{id}")
     public String deletePostWithId(@PathVariable Long id, BlogPost blogPost) {
         blogPostRepository.deleteById(id);
-        return "blogpost/deleted";
+        return "myBlog/deleted";
     }
-
 
     @RequestMapping(value = "/blogpost/edit/{id}")
     public String updateBlogPost(@PathVariable Long id, Model model) {
@@ -65,7 +64,6 @@ public class BlogPostController {
 		}
 		
 		model.addAttribute("blogPost", blogPost);
-		return "blogpost/new";
+		return "myBlog/new";
     }
-
 }
