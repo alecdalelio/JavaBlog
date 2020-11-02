@@ -19,15 +19,38 @@
         
         <input type="hidden" th:field="*{id}" />
             <div class="form-group">
-                <input type="text" class="form-control" placeholder="Blog Title..." th:field="*{title}" />
+                <input
+                type="text"
+                class="form-control"
+                placeholder="Blog Title..."
+                th:field="*{title}" />
             </div>
             <div class="form-group">
-                <input type="text" class="form-control" placeholder="Your name here..." th:field="*{author}" />
+                <input
+                type="text"
+                class="form-control"
+                placeholder="Your name here..."
+                th:field="*{author}" />
             </div>
             <div>
-                <input type="text" class="form-control" placeholder="Blog entry" th:field="*{blogEntry}" />
+                <input
+                type="text"
+                class="form-control"
+                placeholder="Blog entry"
+                th:field="*{blogEntry}" />
             </div>
-            <button class="btn btn-primary" type="submit">Submit your blog post</button>
+            <div>
+                <input
+                type="text"
+                class="form-control"
+                placeholder="Tags (must be separated by commas)"
+                th:field="*{tags}" />
+            </div>
+            <button
+            class="btn btn-primary"
+            type="submit">
+            Submit your blog post
+            </button>
         </form> 
     </div> 
 <div th:replace="/fragments/styling :: body-links" ></div>

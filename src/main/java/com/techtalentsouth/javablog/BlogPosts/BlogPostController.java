@@ -25,16 +25,17 @@ public class BlogPostController {
         }
 
         model.addAttribute("posts", posts);
-
         return "myBlog/index";
     }
 
     @PostMapping(value = "/donuts")
     public String create(BlogPost blogPost, Model model) {
         blogPostRepository.save(blogPost);
+        posts.add(blogPost);
         model.addAttribute("title", blogPost.getTitle());
         model.addAttribute("author", blogPost.getAuthor());
         model.addAttribute("blogEntry", blogPost.getBlogEntry());
+        model.addAttribute("tags", blogPost.getTags());
             return "myBlog/result";
     }
 

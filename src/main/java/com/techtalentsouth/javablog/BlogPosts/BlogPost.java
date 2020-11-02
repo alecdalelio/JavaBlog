@@ -1,5 +1,8 @@
 package com.techtalentsouth.javablog.BlogPosts;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,15 +26,32 @@ public class BlogPost {
         private String author;
     @Column(name="blogentry")
         private String blogEntry;
+    @Column(name="tags")
+        private String tags;
 
+    /* STRIPPED DOWN VERSION LOOKS LIKE THIS:
+    
+    public class BlogPost {
+    
+        private Long id; 
+        private String title;
+        private String author;
+        private String blogEntry;
+
+    */
+
+     // THIS non-argument constructor is needed for JPA
     public BlogPost() {
-        // non-argument constructor is needed for JPA
     }
 
-    public BlogPost(String title, String author, String blogEntry) {
+    public ArrayList<String> hashTags;
+
+    public BlogPost(String title, String author, String blogEntry, ArrayList<String> hashTags) {
         this.title = title;
         this.author = author;
         this.blogEntry = blogEntry;
+        this.hashTags = hashTags;
+        hashTags = new ArrayList<String>(Arrays.asList(tags.split(",")));
     }
 
     public Long getId() {
@@ -66,9 +86,26 @@ public class BlogPost {
         this.blogEntry = blogEntry;
     }
 
+    public String getTags() {
+        return tags;
+    }
+
+    public void setTags(String tags) {
+        this.tags = tags;
+    }
+
+    public ArrayList<String> getHashTags() {
+        return hashTags;
+    }
+
+    public void setHashTags(ArrayList<String> hashTags) {
+        this.hashTags = hashTags;
+    }
+
     @Override
     public String toString() {
-        return "BlogPost [author=" + author + ", blogEntry=" + blogEntry + ", id=" + id + ", title=" + title + "]";
+        return "BlogPost [author=" + author + ", blogEntry=" + blogEntry + ", hashTags=" + hashTags + ", id=" + id
+                + ", tags=" + tags + ", title=" + title + "]";
     }
 
 }

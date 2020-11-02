@@ -4,3 +4,9 @@ insert into blogpost (blogid, author, blogentry, title) values (null, ?, ?, ?) [
 2020-10-26 12:19:22 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLDataException: Value too long for column "BLOGENTRY VARCHAR(255)": "'It seems there is a new bandwagon trend every couple of weeks in the Blockchain/crypto space. Things develop very quickly and h... (297)"; SQL statement:
 insert into blogpost (blogid, author, blogentry, title) values (null, ?, ?, ?) [22001-200]
+2020-10-26 15:19:55 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "BLOGENTRY VARCHAR(255)": "STRINGDECODE('In this series of tutorials, I am going to show you how to build a simple blog application using Spring boot and A... (844)"; SQL statement:
+insert into blogpost (blogid, author, blogentry, title) values (null, ?, ?, ?) [22001-200]
+2020-11-01 15:05:01 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "BLOGENTRY VARCHAR(255)": "'It seems there is a new bandwagon trend every couple of weeks in the Blockchain/crypto space. Things develop very quickly and h... (297)"; SQL statement:
+insert into blogpost (blogid, author, blogentry, title) values (null, ?, ?, ?) [22001-200]
