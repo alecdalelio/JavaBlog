@@ -9,7 +9,6 @@
         <h1>Welcome to my blog!</h1>
         <div th:replace="fragments/navbar :: navbar" ></div>
         <h3>Here you'll find writings about tech, music, food and more.</h3>
-
             <div class="row d-flex justify-content-around">
                 <!-- Creates for each loop and makes individual blog posts -->
                 <div th:each="blog:${posts}">
@@ -21,7 +20,7 @@
                             <div class="card-body">
                                 <strong><p th:text="${blog.author}" /></strong>
                                 <p th:text="${blog.blogEntry}" />
-                                <em><p th:each="tags:${hashTags}" /></em>
+                                <!-- <em><p th:text="${blog.tagsList}" /></em> -->
                             </div>
                             <div class="card-footer">
                                 <a th:href="@{'/blogpost/edit/{id}'(id=${blog.id})}" class="btn-lg btn-info">Update</a>

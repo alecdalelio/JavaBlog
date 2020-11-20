@@ -1,8 +1,5 @@
 package com.techtalentsouth.javablog.BlogPosts;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -44,14 +41,14 @@ public class BlogPost {
     public BlogPost() {
     }
 
-    public ArrayList<String> hashTags;
+    // public ArrayList<String> tagsList;
 
-    public BlogPost(String title, String author, String blogEntry, ArrayList<String> hashTags) {
+    public BlogPost(String title, String author, String blogEntry, String tags) {
         this.title = title;
         this.author = author;
         this.blogEntry = blogEntry;
-        this.hashTags = hashTags;
-        hashTags = new ArrayList<String>(Arrays.asList(tags.split(",")));
+        this.tags = tags;
+        System.out.println("CONSTRUCTOR RAN");
     }
 
     public Long getId() {
@@ -94,18 +91,18 @@ public class BlogPost {
         this.tags = tags;
     }
 
-    public ArrayList<String> getHashTags() {
-        return hashTags;
-    }
-
-    public void setHashTags(ArrayList<String> hashTags) {
-        this.hashTags = hashTags;
-    }
-
     @Override
     public String toString() {
-        return "BlogPost [author=" + author + ", blogEntry=" + blogEntry + ", hashTags=" + hashTags + ", id=" + id
-                + ", tags=" + tags + ", title=" + title + "]";
+        return "BlogPost [author=" + author + ", blogEntry=" + blogEntry + ", id=" + id + ", tags=" + tags + ", title="
+                + title + "]";
     }
+
+    // public ArrayList<String> gettagsList() {
+    //     return tagsList;
+    // }
+
+    // public void settagsList(ArrayList<String> tagsList) {
+    //     this.tagsList = tagsList;
+    // }
 
 }

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Alec's Blog</title>
+    <div th:replace="/fragments/styling :: head-style" ></div>
+</head>
+<body>
+    <h1>Alec's Blog</h1>
+    <div th:replace="fragments/navbar :: navbar" ></div>
+
+    <div class="container">
+        <h3>Blog posts related to: <span th:text="${myAwesomeTag}"></span></h3>
+    </div>
+    
+</body>
+</html>
